@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MCQ Display</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .question {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 15px;
+      }
+      .options {
+        margin-top: 10px;
+      }
+      .option {
+        margin: 5px 0;
+      }
+      .answer {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MCQ Questions</h1>
+    <div id="mcq-container"></div>
+
+    <!-- Include your data file first -->
+    <script src="demo.js"></script>
+
+    <!-- Then the script that uses the data -->
+    <script>
+      const container = document.getElementById("mcq-container");
+
+      data.forEach((item, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+
+        const questionHTML = `
+        <h3>Q${index + 1}: ${item.Question}</h3>
+        <div class="options">
+          <div class="option"><strong>A.</strong> ${item["Option A"]}</div>
+          <div class="option"><strong>B.</strong> ${item["Option B"]}</div>
+          <div class="option"><strong>C.</strong> ${item["Option C"]}</div>
+          <div class="option"><strong>D.</strong> ${item["Option D"]}</div>
+        </div>
+        <div class="answer">Correct Answer: ${item.Answers}</div>
+      `;
+
+        questionDiv.innerHTML = questionHTML;
+        container.appendChild(questionDiv);
+      });
+    </script>
+  </body>
+</html>
